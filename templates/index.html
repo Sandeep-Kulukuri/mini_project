@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com -->
+  <title>diabetes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+  }
+  .button {
+  border-radius: 15px 50px;
+  background-color: black;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  height: 50px;
+  width: 100px;
+}
+
+.button span {
+  cursor: pointer;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+  input[type=text] {
+   border-radius: 15px 50px;
+    font color="black";
+  padding: 20px;
+  height: 9px;
+  }
+
+  h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }
+  .jumbotron {
+    background-color: #1abc9c; /* Green */
+    color: #fff;
+    padding: 100px 25px;
+    font-family: Montserrat, sans-serif;
+  }
+  .container-fluid {
+    padding: 60px 50px;
+  }
+  .bg-grey {
+    background-color: #f6f6f6;
+  }
+  .logo-small {
+    color: #f4511e;
+    font-size: 50px;
+  }
+  .logo {
+    color: #f4511e;
+    font-size: 200px;
+  }
+  .thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+  }
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+  }
+  .carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #f4511e;
+  }
+  .carousel-indicators li {
+    border-color: #f4511e;
+  }
+  .carousel-indicators li.active {
+    background-color: #f4511e;
+  }
+  .item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+  }
+  .item span {
+    font-style: normal;
+  }
+  .panel {
+    border: 1px solid #f4511e;
+    border-radius:0 !important;
+    transition: box-shadow 0.5s;
+  }
+  .panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-footer .btn:hover {
+    border: 1px solid #f4511e;
+    background-color: #fff !important;
+    color: #f4511e;
+  }
+  .panel-heading {
+    color: #fff !important;
+    background-color: #f4511e !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .panel-footer {
+    background-color: white !important;
+  }
+  .panel-footer h3 {
+    font-size: 32px;
+  }
+  .panel-footer h4 {
+    color: #aaa;
+    font-size: 14px;
+  }
+  .panel-footer .btn {
+    margin: 15px 0;
+    background-color: #f4511e;
+    color: #fff;
+  }
+  .navbar {
+    margin-bottom: 0;
+    background-color: #1abc9c; /* Green */
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+  }
+  footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #f4511e;
+  }
+  .slideanim {visibility:hidden;}
+  .slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+  }
+
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+      width: 100%;
+      margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+      font-size: 150px;
+    }
+  }
+  </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Mellitus</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#symptoms">SYMPTOMS</a></li>
+          <li><a href="#precautions">TIPS</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-center">
+  <h1>Test your Diabetes here!</h1>
+  <p>Type 2</p>
+    <div class="login">
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post" id="tx">
+    	<input type="text" size="10" name="pregnant" placeholder="pregnant" required="required" />
+        <input type="text" size="10" name="Plasma_glucose" placeholder="glucose" required="required" />
+		<input type="text" size="10" name="bp" placeholder="bp" required="required" />
+        <input type="text" size="10" name="skin" placeholder="skin" required="required" />
+        <input type="text" size="10" name="insulin" placeholder="insulin" required="required" />
+        <input type="text" size="10" name="mass_index" placeholder="mass_index" required="required" />
+        <input type="text" size="10" name="pedigree" placeholder="pedigree" required="required" />
+        <input type="text" size="10"  name="age" placeholder="age" required="required" />
+<br><br><br>
+        <button type="submit" class="button">Predict</button>
+    </form>
+
+
+
+   <br>
+   {{ prediction_text }}
+ </div>
+
+
+      </div>
+    </div>
+
+
+
+<!-- Container (About Section) -->
+<div id="about" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>About Mellitus</h2><br>
+      <h4>Itis the most common type of diabetes. It is a chronic condition in which blood glucose (sugar) can no longer be regulated. There are two reasons for this. First, the cells of the body become resistant to insulin (insulin resistant). Insulin works like a key to let glucose (blood sugar) move out of the blood and into the cells where it is used as fuel for energy. When the cells become insulin resistant, moving sugar into the cells requires more and more insulin, and too much sugar stays in the blood. Over time, if the cells require more and more insulin, the pancreas can't make enough insulin to keep up and begins to fail.</h4>
+      <br><button class="btn btn-default btn-lg">Get in Touch</button>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-signal logo"></span>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-grey">
+
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-globe logo slideanim"></span>
+    </div>
+    <div class="col-sm-8">
+      <h2>Our Values</h2><br>
+      <h4><strong>MISSION:</strong>Enhance access to the latest and most proven programs, content
+and resources on diabetes care for people with diabetes.
+Improve the quality of life for people living with diabetes.</h4><br>
+      <p><strong>VISION:</strong> Expand the number of camps and other programs designed to help
+children and adolescents manage their diabetes independently.
+Increase the number of children and adolescents who participate
+in these programs.</p>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container-fluid bg-grey" id="symptoms">
+
+<div class="row">
+    <div class="col-sm-6">
+      <img style="width:400px" src="{{ url_for('static', filename='images/Diabetes Symptoms.jpg') }}"> </div>
+      <div class="col-sm-6">
+<h2>Symptoms of diabetes</h2>
+<h4>Diabetes symptoms are caused by rising blood sugar.
+General symptoms
+The general symptoms of diabetes include:
+increased hunger<br>
+increased thirst<br>
+weight loss<br>
+frequent urination<br>
+blurry vision<br>
+extreme fatigue<br>
+sores that don’t heal<br>
+Symptoms in women
+  Women with diabetes can also have symptoms such as urinary tract infections, yeast infections, and dry, itchy skin.</h4>
+ </h4>
+      </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+
+<div class="container-fluid bg-grey" id="precautions">
+
+  <div class="row">
+    <div class="col-sm-6">
+      <img style="width:550px; height:600px;" src="{{ url_for('static', filename='images/dia-tips.jpg') }}">
+ </div>
+      <div class="col-sm-6">
+          <h2>Here are some tips to help you reduce your risk of type 2 diabetes.</h2><br>
+  <h4>
+  <b>Check your risk of diabetes</b><br> Take the Life! risk assessment test and learn more about your risk of developing type 2 diabetes. A 12+ score indicates that you are at high risk and may be eligible for the Life! program - a free Victorian lifestyle modification program that helps you reduce your risk of type 2 diabetes and cardiovascular disease, or call 13 RISK (13 7475).
+
+<b><br>Manage your weight</b><br> Excess body fat, particularly if stored around the abdomen, can increase the body’s resistance to the hormone insulin. This can lead to type 2 diabetes.
+
+<br><b>Exercise regularly</b><br> Moderate physical activity on most days of the week helps manage weight, reduce blood glucose levels and may also improve blood pressure and cholesterol.
+
+<br><b>Eat a balanced, healthy diet</b><br>Reduce the amount of fat in your diet, especially saturated and trans fats. Eat more fruit, vegetables and high-fibre foods. Cut back on salt.
+
+  </h4>
+      </div>
+  </div>
+
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+
+</footer>
+
+<script>
+document.getElementById("tx").onclick = function() {
+
+    this.style.color = 'black';
+}
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+
+</body>
+</html>
