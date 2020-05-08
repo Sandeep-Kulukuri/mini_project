@@ -7,11 +7,15 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 import pandas as pd
 from flask import Flask, request
+#from sklearn.ensemble import RandomForestClassifier as rfc
+from sklearn.model_selection import train_test_split as tts
+from sklearn import metrics
+import pickle
 # set the project root directory as the static folder, you can set others.
 app = Flask(__name__, static_url_path='')
 
 try:
-    model = pickle.load(open('aitwo.pkl', 'rb'))
+    model = pickle.load(open('rf_plain.pkl', 'rb'))
 except:
     UnpicklingError
 
@@ -43,19 +47,21 @@ def upload():
 @app.route('/uploader', methods=['GET','POST'])
 def uploader():
     f = request.files['file']
-    f.save(f.filename)
-    df1 = pd.read_csv('dataset.csv')
+    #f.save(f.filename)
+    df1 = pd.read_csv(f)
     lt1 = time.ctime()
     xx=''
     s = ''
     for i in range(10, 19):
         s = s + lt1[i]
-    y1 = df1[:,:-1]
-    x1 = df1.drop(['Outcome','SkinThickness'], axis=1)
 
+    #y1 = df1.Outcome
+    y1 = df1.iloc[:,-1]
+    x1 = df1.iloc[:,:8]
+    #x1 = df1.drop('Outcome', axis=1)
     #x1_train, x1_test, y1_train, y1_test = tts(x1, y1, test_size=0.2)
    
-    yhat = model.predict('dataset.csv')
+    yhat = model.predict(x1)
     lt2=time.ctime()
     for i in range(10, 19):
         xx = xx+ lt2[i]
@@ -65,7 +71,7 @@ def uploader():
     accurac = (metrics.accuracy_score(y1, yhat))
     accuracy1 = round(accurac, 2)
     # return "hiii"
-    return render_template('upload.html',acc=accuracy1,s=s,xx=xx)
+    return render_template('upload.html',acc=accuracy1)
 
 
 #prediction_text='Employee Salary should be $ {}'.format(output)
